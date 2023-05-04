@@ -14,6 +14,9 @@
   <body class="bg-transperent ">
     <%= render 'home/header', class: "position-sticky"%>
     <div class = "container">
+      <% if notice %>
+        <%= render "layouts/error_msg"%>
+      <%end%>
       <br/>
       <%= yield %>
     </div>
