@@ -1,3 +1,24 @@
 {
-    "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "auto-close-tag.excludedTags": [
+    "area",
+    "base",
+    "br",
+    "col",
+    "command",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "keygen",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr"
+],
+"auto-close-tag.fullMode": true,
+"auto-close-tag.insertSpaceBeforeSelfClosingTag": true,
+"auto-close-tag.SublimeText3Mode": true
 }
