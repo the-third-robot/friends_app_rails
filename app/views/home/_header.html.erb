@@ -33,7 +33,9 @@
                 <%# Signout condition %>
               <% if user_signed_in? %>
                 <li class="nav-item">
-                    <%= link_to 'Sign Out',  destroy_user_session_path, class: "nav-link"%>
+                  <%# for signout the request is delete & not get, so we additionally need to add the delete methode to the link
+                  to ensure the session is destroyed properly %>
+                    <%= link_to 'Sign Out',  destroy_user_session_path, method: :delete, class: "nav-link"%>
                 </li>
               <%end%>
               <li class="nav-item">
