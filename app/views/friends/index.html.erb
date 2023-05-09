@@ -1,29 +1,36 @@
-<table class="table table-dark table-striped table-hover">
-  <thead>
-    <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Twitter</th>
-      <th scope="col">Delete Entry</th>
-      <th scope="col">View Friend</th>
-    </tr>
-  </thead>
-  <% @friends.each do |friend| %>
-  <tbody>
-    <tr>
-      <th><%= friend.first_name %></th>
-      <td><%= friend.last_name %></td>
-      <td><%= friend.email %></td>
-      <td><%= friend.phone %></td>
-      <td><%= friend.twitter %></td>
-      <td>  <%= link_to "Destroy", friend, method: :delete %></td>
-      <td><%= link_to "View #{friend.first_name}", friend %></td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+ <%if user_signed_in?%>
 
-
-<%= link_to "New friend", new_friend_path, class: "btn btn-dark" %>
+    <table class="table table-dark table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Twitter</th>
+          <th scope="col">Delete Entry</th>
+          <th scope="col">View Friend</th>
+        </tr>
+      </thead>
+    <% @friends.each do |friend| %>
+      <% if friend.user_id == current_user.id%>
+        <tbody>
+          <tr>
+            <th><%= friend.first_name %></th>
+            <td><%= friend.last_name %></td>
+            <td><%= friend.email %></td>
+            <td><%= friend.phone %></td>
+            <td><%= friend.twitter %></td>
+            <td>  <%= button_to "Destroy", friend, method: :delete, class: "btn btn-dark ms-2" %></td>
+            <td><%= link_to "View #{friend.first_name}", friend %></td>
+          </tr>
+        </tbody>
+      <%end%>
+      <% end %>
+    </table>
+  <%= link_to "New friend", new_friend_path, class: "btn btn-dark" %>
+<%else%>
+  <div class="alert alert-primary alert-dismissible fade show mt-4" role="alert">
+    <strong>Please Login to see yout friends list.</strong>
+  </div>
+<%end%>

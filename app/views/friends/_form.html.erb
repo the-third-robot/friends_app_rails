@@ -38,6 +38,11 @@
     </div>
 
     <div>
+      <%# Sending a default user id value in the backend: ensure you've added this field in the params to send in the db %>
+      <%= form.number_field :user_id, id: :friend_user_id, class: "form-control", value: current_user.id, type: :hidden %>
+    </div>
+
+    <div>
       <%= form.submit  class:"btn btn-secondary mt-2" %>
     </div>
   </div>
