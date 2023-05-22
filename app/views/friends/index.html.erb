@@ -13,7 +13,6 @@
         </tr>
       </thead>
     <% @friends.each do |friend| %>
-      <% if friend.user_id == current_user.id%>
         <tbody>
           <tr>
             <th><%= friend.first_name %></th>
@@ -26,7 +25,7 @@
           </tr>
         </tbody>
       <%end%>
-    <% end %>
+
   </table>
   <%= link_to "New friend", new_friend_path, class: "btn btn-dark" %>
 <%else%>
